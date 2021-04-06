@@ -1,20 +1,25 @@
 import {Popup} from './Popup.js'; /*class PopupWithForm наследует от class Popup.*/
 
 export class PopupWithForm extends Popup {
-    constructor (popupSelector, formSubmissionCallback) {
-        super(popupSelector);
-        this._form = this.popupSelector.querySelector('.popup__form');
+    constructor (popupElement, formSubmissionCallback) {
+        super(popupElement);
+        this._form = this.popupElement.querySelector('.popup__form');
+        this._inputAll = this._form.querySelectorAll('.popup__input')
         this.formSubmissionCallback = formSubmissionCallback.submitHandler;
         /*Кроме селектора попапа принимает в конструктор колбэк сабмита формы.*/
     }
 
     _getInputValues() {
-        return this._form.querySelectorAll('.popup__input');
+        const objectInputValue = {};
+        for (let i = 0; i < this._inputAll.length; i++) {
+            objectInputValue[i] = this._inputAll[i].value;
+        }
+        return objectInputValue;
     } /*приватный метод _getInputValues, собирает данные всех полей формы.*/
 
     setEventListeners() { /*Перезаписывает родительский метод setEventListeners.*/
         super.setEventListeners();
-        this.formSubmissionCallback(this._getInputValues());
+        this.formSubmissionCallback();
     } /*публичный метод setEventListeners, добавляет обработчик клика иконке закрытия и добавлять обработчик сабмита формы.*/
 
     close () { /*Перезаписывает родительский метод close.*/

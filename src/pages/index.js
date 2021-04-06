@@ -20,7 +20,6 @@ const popupEditProfile = new PopupWithForm(popupProfile, {submitHandler: () => {
 const popupAddCard = new PopupWithForm(popupAddition, {submitHandler: () => {popupFormPicture.addEventListener('submit', submitPopupFormPicture)}});
 const cardList = new Section({items: initialCards, renderer: (item) => {
   const card = new Card(item, ClassElementsTemplate, (name, link) => {
-    popupImage.setEventListeners();
     popupImage.open(name, link);
   });
   const cardElement = card.generateCard();
@@ -40,21 +39,27 @@ function submitPopupFormPicture(e) {
   popupSubmitButtonPicture.disabled = true;
 }
 
+function returnUserInfo() {
+  popupInputTextName.value = userInfo.getUserInfo().name.textContent;
+  popupInputTextDescription.value = userInfo.getUserInfo().description.textContent;
+}
+
 cardList.renderElements();
 
 editButton.addEventListener('click', () => {
   profileValidation.clearValidation();
-  popupEditProfile.setEventListeners();
   popupEditProfile.open();
-  userInfo.returnUserInfo({nameValue: popupInputTextName, descriptionValue: popupInputTextDescription});
+  returnUserInfo();
 });
 
 profileAddButton.addEventListener('click', () => {
   popupEditProfile.close(popupInputTextName, popupInputTextDescription);
   cardFormValidator.clearValidation();
-  popupAddCard.setEventListeners();
   popupAddCard.open();
 });
 
 profileValidation.enableValidation();
 cardFormValidator.enableValidation();
+popupEditProfile.setEventListeners();
+popupAddCard.setEventListeners();
+popupImage.setEventListeners();

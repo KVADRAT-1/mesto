@@ -1,20 +1,16 @@
 export class UserInfo { /*class UserInfo отвечает за управление отображением информации о пользователе на странице.*/
-    constructor (objectSelector) { /*Принимает в конструктор объект с селекторами двух элементов: элемента имени пользователя и элемента информации о себе.*/
-        this.nameSelector = objectSelector.name;
-        this.descriptionSelector = objectSelector.description;
+    constructor (userData) { /*Принимает в конструктор объект с селекторами двух элементов: элемента имени пользователя и элемента информации о себе.*/
+        this.userData = userData;
+        this.userName = userData.name;
+        this.userDescription = userData.description;
     }
 
     getUserInfo() {
-        return objectSelector;
+        return this.userData;
     } /*публичный метод getUserInfo, который возвращает объект с данными пользователя.*/
     
     setUserInfo(newData) {
-        this.nameSelector.textContent = newData.nameValue.value;
-        this.descriptionSelector.textContent = newData.descriptionValue.value;
+        this.userName.textContent = newData.nameValue.value;
+        this.userDescription.textContent = newData.descriptionValue.value;
     }/*публичный метод setUserInfo, который принимает новые данные пользователя и добавляет их на страницу.*/
-
-    returnUserInfo(newData) {
-        newData.nameValue.value = this.nameSelector.textContent;
-        newData.descriptionValue.value = this.descriptionSelector.textContent;
-    }/*публичный метод setUserInfo, который принимает данные input и меняет на данные пользователя со страницы.*/
 }
