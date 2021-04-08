@@ -10,14 +10,14 @@ import { PopupWithForm } from '../components/PopupWithForm.js'
 import { PopupWithImage } from '../components/PopupWithImage.js'
 import { popupProfile, popupAddition, popupPicture, editButton, popupFormProfile, popupFormPicture, 
   profileName, profileDescription, popupInputTextName, popupInputTextDescription, profileAddButton, 
-  elementsList, namePicture, linkPicture, popupSubmitButtonPicture, ClassElementsTemplate } from '../utils/constants.js'
+  elementsList, popupSubmitButtonPicture, ClassElementsTemplate } from '../utils/constants.js'
 
 const popupImage = new PopupWithImage(popupPicture);
 const profileValidation = new FormValidator(popupFormProfile, formConfig);
 const cardFormValidator = new FormValidator(popupFormPicture, formConfig);
 const userInfo = new UserInfo({name: profileName, description: profileDescription});
-const popupEditProfile = new PopupWithForm(popupProfile, {submitHandler: () => {popupFormProfile.addEventListener('submit', submitPopupFormProfile)}});
-const popupAddCard = new PopupWithForm(popupAddition, {submitHandler: () => {popupFormPicture.addEventListener('submit', submitPopupFormPicture)}});
+const popupEditProfile = new PopupWithForm(popupProfile, {submitHandler: (objectInputValue) => {submitPopupFormProfile(objectInputValue)}});
+const popupAddCard = new PopupWithForm(popupAddition, {submitHandler: (objectInputValue) => {submitPopupFormPicture(objectInputValue)}});
 const cardList = new Section({items: initialCards, renderer: (item) => {
   const card = new Card(item, ClassElementsTemplate, (name, link) => {
     popupImage.open(name, link);
@@ -26,15 +26,13 @@ const cardList = new Section({items: initialCards, renderer: (item) => {
   return cardElement;
 }}, elementsList);
 
-function submitPopupFormProfile(e) {
-  e.preventDefault();
-  userInfo.setUserInfo({nameValue: popupInputTextName, descriptionValue: popupInputTextDescription});
+function submitPopupFormProfile(objectInputValue) {
+  userInfo.setUserInfo({nameValue: objectInputValue[0], descriptionValue: objectInputValue[1]});
   popupEditProfile.close(popupInputTextName, popupInputTextDescription);
 }
 
-function submitPopupFormPicture(e) {
-  e.preventDefault();
-  cardList.addItem({name: namePicture.value, link: linkPicture.value});
+function submitPopupFormPicture(objectInputValue) {
+  cardList.addItem({name: objectInputValue[0], link: objectInputValue[1]});
   popupAddCard.close();
   popupSubmitButtonPicture.disabled = true;
 }

@@ -5,7 +5,7 @@ export class PopupWithForm extends Popup {
         super(popupElement);
         this._form = this.popupElement.querySelector('.popup__form');
         this._inputAll = this._form.querySelectorAll('.popup__input')
-        this.formSubmissionCallback = formSubmissionCallback.submitHandler;
+        this._formSubmissionCallback = formSubmissionCallback.submitHandler;
         /*Кроме селектора попапа принимает в конструктор колбэк сабмита формы.*/
     }
 
@@ -19,7 +19,8 @@ export class PopupWithForm extends Popup {
 
     setEventListeners() { /*Перезаписывает родительский метод setEventListeners.*/
         super.setEventListeners();
-        this.formSubmissionCallback();
+        this._form.addEventListener('submit', (evt) => {evt.preventDefault()});
+        this._form.addEventListener('submit', () => {this._formSubmissionCallback(this._getInputValues())});
     } /*публичный метод setEventListeners, добавляет обработчик клика иконке закрытия и добавлять обработчик сабмита формы.*/
 
     close () { /*Перезаписывает родительский метод close.*/

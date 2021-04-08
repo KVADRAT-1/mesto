@@ -10,7 +10,7 @@ export class UserInfo { /*class UserInfo отвечает за управлен�
     } /*публичный метод getUserInfo, который возвращает объект с данными пользователя.*/
     
     setUserInfo(newData) {
-        this.userName.textContent = newData.nameValue.value;
-        this.userDescription.textContent = newData.descriptionValue.value;
+        this.userName.textContent = newData.nameValue;
+        this.userDescription.textContent = newData.descriptionValue;
     }/*публичный метод setUserInfo, который принимает новые данные пользователя и добавляет их на страницу.*/
 }
