@@ -1,10 +1,17 @@
 export class Popup { /*class Popup отвечает за открытие и закрытие попапа.*/
     constructor (popupElement) {
         this.popupElement = popupElement; /*Принимает в конструктор единственный параметр — селектор попапа.*/
+        this._popupSubmit = popupElement.querySelector('.popup__submit-button');
+        this._submitButton = this.popupElement.querySelector('.popup__submit-button');
         this.functionClose = {
             handleEscClose: (e) => {this._handleEscClose(e)},
             clickPopupClose: (e) => {this._clickPopupClose(e)}
         }
+    }
+
+    setText(text){
+        this._popupSubmit.textContent = text;
+        this._submitButton.disabled = true;
     }
     
     _handleEscClose(e) {

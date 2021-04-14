@@ -2,15 +2,15 @@ export class UserInfo { /*class UserInfo отвечает за управлен�
     constructor (userData) { /*Принимает в конструктор объект с селекторами двух элементов: элемента имени пользователя и элемента информации о себе.*/
         this.userData = userData;
         this.userName = userData.name;
-        this.userDescription = userData.description;
+        this.userDescription = userData.about;
     }
 
     getUserInfo() {
         return this.userData;
     } /*публичный метод getUserInfo, который возвращает объект с данными пользователя.*/
     
-    setUserInfo(newData) {
-        this.userName.textContent = newData.nameValue;
-        this.userDescription.textContent = newData.descriptionValue;
+    setUserInfo(dataUserServer) {
+        this.userName.textContent = dataUserServer.name;
+        this.userDescription.textContent = dataUserServer.about;
     }/*публичный метод setUserInfo, который принимает новые данные пользователя и добавляет их на страницу.*/
 }

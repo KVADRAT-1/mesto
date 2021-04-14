@@ -1,4 +1,4 @@
-import {Popup} from './Popup.js'; /*class PopupWithImage наследует от class Popup.*/
+import { Popup } from './Popup.js'; /*class PopupWithImage наследует от class Popup.*/
 
 export class PopupWithImage extends Popup { /*class PopupWithImage перезаписывает родительский метод open.*/
     constructor (popupElement) {

@@ -1,6 +1,8 @@
 export const popupProfile = document.querySelector('#popup__profile');
 export const popupAddition = document.querySelector('#popup__addition');
 export const popupPicture = document.querySelector('#popup__picture');
+export const popupDeletePicture = document.querySelector('#popup__deletePicture');
+export const popupProfileAvatar = document.querySelector('#popup__profileAvatar');
 export const editButton = document.querySelector('.profile__edit-buttom');
 export const popupFormProfile = document.querySelector('#popup__form-profile');
 export const popupFormPicture = document.querySelector('#popup__form-picture');
@@ -14,3 +16,5 @@ export const namePicture = document.querySelector('#popup__input_name_picture');
 export const linkPicture = document.querySelector('#popup__input_link_picture');
 export const popupSubmitButtonPicture = document.querySelector('#popup__submit-button-picture');
 export const ClassElementsTemplate = ('#elements-template');
+export const Avatar = document.querySelector('.profile__avatar');
+export const AvatarContainer = document.querySelector('.profile__avatar-container');
