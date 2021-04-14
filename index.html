@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mesto</title>
+</head>
+<body class="body">
+    <div class="page">
+        <header class="header">
+            <img class="header__logo" src="<%=require('./images/header-logo.svg')%>" alt="Логотип">
+        </header>
+        <main class="content">
+            <section class="profile">
+                <div class="profile__avatar-container">
+                    <img class="profile__avatar-icon" src="<%=require('./images/edit-icon.svg')%>" alt="Icon">
+                    <img class="profile__avatar" src="<%=require('./images/profile-avatar.png')%>" alt="Аватарка">
+                </div>
+                <div class="profile__info">
+                    <div class="profile__group">
+                    <h1 class="profile__name"></h1>
+                    <button class="profile__edit-buttom" type="button"><img class="profile__edit-icon" src="<%=require('./images/edit-icon.svg')%>" alt="Редактировать имя"></button>
+                    </div>
+                    <p class="profile__description"></p>
+                </div> 
+                <button class="profile__add-button" type="button"><img class="profile__add-icon" src="<%=require('./images/add-button.svg')%>" alt="Крестик"></button>
+            </section>
+            <section class="elements">
+                <ul class="elements__list">
+                    
+                </ul>
+            </section>
+        </main>
+        <footer class="footer">
+            <p class="footer__copyright">&copy;&nbsp;2020&nbsp;Mesto&nbsp;Russia</p>
+        </footer>
+        <section class="popup" id="popup__profile">
+            <div class="popup__container">
+                <button id="popup__close-button-profile" class="popup__close-button" type="button"></button>
+                <h2 class="popup__heading">Редактировать профиль</h2>
+                <form id="popup__form-profile" class="popup__form form" name="popup__form" novalidate>
+                    <fieldset class="popup__form-set">
+                        <div class="popup__section">
+                            <input id="popup__input_text_name" class="popup__input popup__input_text_name" name="kebab-case" type="text" required minlength="2" maxlength="40" placeholder="Имя">
+                            <span id="popup__input_text_name-error" class="popup__input-error"></span>
+                        </div>
+                        <div class="popup__section">
+                            <input id="popup__input_text_description" class="popup__input popup__input_text_description" name="popup__input_text_description" type="text" required minlength="2" maxlength="200" placeholder="Описание">
+                            <span id="popup__input_text_description-error" class="popup__input-error"></span>
+                        </div>
+                            <button class="popup__submit-button" type="submit">Сохранить</button>
+                    </fieldset>
+                </form>
+            </div>
+        </section>
+        <section id="popup__addition" class="popup">
+            <div class="popup__container">
+                <button id="popup__close-button-addition" class="popup__close-button" type="button"></button>
+                <h2 class="popup__heading">Новое место</h2>
+                <form id="popup__form-picture" class="popup__form form" name="popup__form_addition_picture" novalidate>
+                    <fieldset class="popup__form-set">
+                        <div class="popup__section">
+                            <input id="popup__input_name_picture" class="popup__input popup__input_name_picture" name="popup__input_name_picture" type="text" placeholder="Название" required minlength="2" maxlength="30">
+                            <span id="popup__input_name_picture-error" class="popup__input-error"></span>
+                        </div>
+                        <div class="popup__section">
+                            <input id="popup__input_link_picture" class="popup__input popup__input_link_picture" name="popup__input_link_picture" type="url" placeholder="Ссылка на картинку" required>
+                            <span id="popup__input_link_picture-error" class="popup__input-error"></span>
+                        </div>
+                            <button id="popup__submit-button-picture" class="popup__submit-button" type="submit">Сохранить</button>
+                    </fieldset>
+                </form>
+            </div>
+        </section>
+        <section id="popup__picture" class="popup">
+            <div class="popup__increase">
+            <button id="popup__close-button-picture" class="popup__close-button" type="button"></button>
+            <img class="popup__photo" src="<%=require('./images/photo-karachaevsk.png')%>" alt="Картинка">
+            <p id="popup__text" class="popup__text"></p>
+            </div>
+        </section>
+        <section id="popup__profileAvatar" class="popup">
+            <div class="popup__container">
+                <button id="popup__close-button-profileAvatar" class="popup__close-button" type="button"></button>
+                <h2 class="popup__heading">Обновить аватар</h2>
+                <form id="popup__form-avatar" class="popup__form form" name="popup__form_profileAvatar_picture" novalidate>
+                    <fieldset class="popup__form-set">
+                        <div class="popup__section">
+                            <input id="popup__input_link_avatar" class="popup__input popup__input_link_picture" name="popup__input_link_picture" type="url" placeholder="Ссылка на новый аватар" required>
+                            <span id="popup__input_link_avatar-error" class="popup__input-error"></span>
+                        </div>
+                            <button id="popup__submit-button-avatar" class="popup__submit-button" type="submit">Сохранить</button>
+                    </fieldset>
+                </form>
+            </div>
+        </section>
+        <section class="popup" id="popup__deletePicture">
+            <div class="popup__container">
+                <button id="popup__close-button-deletePicture" class="popup__close-button" type="button"></button>
+                <h2 class="popup__heading">Вы уверены ?</h2>
+                <form id="popup__form-deletePicture" class="popup__form form" name="popup__form" novalidate>
+                    <fieldset class="popup__form-set">
+                            <button class="popup__submit-button" type="submit">Да</button>
+                    </fieldset>
+                </form>
+            </div>
+        </section>
+    </div>
+    <template id="elements-template">
+        <li class="elements__item">
+            <button class="elements__trash-button" type="button"></button>
+            <img class="elements__photo" src="<%=require('./images/photo-karachaevsk.png')%>" alt="Карачаевск">
+            <div class="elements__group">
+                <h2 class="elements__text"></h2>
+                <div class="elements__likes">
+                <button class="elements__like" type="button"></button>
+                <div class="elements__like-quantity">6</div>
+                </div>
+            </div>
+        </li>
+    </template>
+</body>
+</html>
