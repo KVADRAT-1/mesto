@@ -8,7 +8,7 @@
 <body class="body">
     <div class="page">
         <header class="header">
-            <img class="header__logo" src="<%=require('./images/header-logo.svg')%>" alt="Логотип">
+                <img class="header__logo" src="<%=require('./images/header-logo.svg')%>" alt="Логотип">
         </header>
         <main class="content">
             <section class="profile">
@@ -41,11 +41,11 @@
                 <form id="popup__form-profile" class="popup__form form" name="popup__form" novalidate>
                     <fieldset class="popup__form-set">
                         <div class="popup__section">
-                            <input id="popup__input_text_name" class="popup__input popup__input_text_name" name="kebab-case" type="text" required minlength="2" maxlength="40" placeholder="Имя">
+                            <input id="popup__input_text_name" class="popup__input popup__input_text_name" name="nameProfile" type="text" required minlength="2" maxlength="40" placeholder="Имя">
                             <span id="popup__input_text_name-error" class="popup__input-error"></span>
                         </div>
                         <div class="popup__section">
-                            <input id="popup__input_text_description" class="popup__input popup__input_text_description" name="popup__input_text_description" type="text" required minlength="2" maxlength="200" placeholder="Описание">
+                            <input id="popup__input_text_description" class="popup__input popup__input_text_description" name="nameAbout" type="text" required minlength="2" maxlength="200" placeholder="Описание">
                             <span id="popup__input_text_description-error" class="popup__input-error"></span>
                         </div>
                             <button class="popup__submit-button" type="submit">Сохранить</button>
@@ -60,11 +60,11 @@
                 <form id="popup__form-picture" class="popup__form form" name="popup__form_addition_picture" novalidate>
                     <fieldset class="popup__form-set">
                         <div class="popup__section">
-                            <input id="popup__input_name_picture" class="popup__input popup__input_name_picture" name="popup__input_name_picture" type="text" placeholder="Название" required minlength="2" maxlength="30">
+                            <input id="popup__input_name_picture" class="popup__input popup__input_name_picture" name="namePicture" type="text" placeholder="Название" required minlength="2" maxlength="30">
                             <span id="popup__input_name_picture-error" class="popup__input-error"></span>
                         </div>
                         <div class="popup__section">
-                            <input id="popup__input_link_picture" class="popup__input popup__input_link_picture" name="popup__input_link_picture" type="url" placeholder="Ссылка на картинку" required>
+                            <input id="popup__input_link_picture" class="popup__input popup__input_link_picture" name="nameLink" type="url" placeholder="Ссылка на картинку" required>
                             <span id="popup__input_link_picture-error" class="popup__input-error"></span>
                         </div>
                             <button id="popup__submit-button-picture" class="popup__submit-button" type="submit">Сохранить</button>
